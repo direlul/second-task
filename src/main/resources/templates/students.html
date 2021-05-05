@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 25px;
+        }
+
+        .addForm {
+            margin: 20px auto;
+            text-align: center
+        }
+
+        .deleteForm {
+            margin: 20px auto;
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Группа</th>
+            <th>Дата Рождения</th>
+        </tr>
+
+        <tr th:each="student : ${students}">
+            <td th:utext="${student.id}">..</td>
+            <td th:utext="${student.lastName}">..</td>
+            <td th:utext="${student.firstName}">..</td>
+            <td th:utext="${student.patronymic}">..</td>
+            <td th:utext="${student.group.name}">..</td>
+            <td th:utext="${student.dateOfBirth}">..</td>
+        </tr>
+    </table>
+
+    <div class="addForm">
+        Добавить нового студента
+        <form th:method="post" th:action="@{/add}" th:object="${student}">
+            <label>Фамилия</label></br>
+            <input type="text" th:field="*{lastName}"></br>
+            <label>Имя</label></br>
+            <input type="text" th:field="*{firstName}"></br>
+            <label>Отчество</label></br>
+            <input type="text" th:field="*{patronymic}"></br>
+            <label for="start">Дата рождения:</label></br>
+            <input type="date" id="start" name="trip-start" th:field="*{dateOfBirth}"
+                min="1970-01-01" max="2005-12-31"></br>
+
+            <select th:field="*{group}">
+                <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
+            </select>
+
+            <input type="submit">
+        </form>
+    </div>
+
+    <div class="deleteForm">
+        Удалить студента по id:
+        <form th:method="post" th:action="@{/delete}">
+            <input type="text" name="id"></br>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
