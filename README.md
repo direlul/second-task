@@ -34,6 +34,7 @@ git clone https://github.com/direlul/second-task.git
 CREATE DATABASE students;
 ```
 Запустить в idea или
+
 Собрать проект:
 ```sh
 mvn clean install
