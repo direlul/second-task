@@ -26,8 +26,9 @@ postgresql, sqlite и т.д. - любая). Завести в БД таблиц�
 
 Склонировать репозиторий:
 ```sh
-git clone https://github.com/direlul/first-task.git
+git clone https://github.com/direlul/second-task.git
 ```
+Настроить подключение к бд в application.properties
 В postgres создать бд:
 ```sh
 CREATE DATABASE students;
@@ -42,4 +43,4 @@ mvn clean install
 ```sh
 java -jar SecondTask-0.0.1-SNAPSHOT.jar
 ```
-
+Зайти по адресу: http://localhost:8080/
